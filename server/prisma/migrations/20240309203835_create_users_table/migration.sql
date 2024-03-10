@@ -6,6 +6,6 @@ CREATE TABLE `users` (
     `password` VARCHAR(191) NOT NULL,
     `phone` INTEGER NOT NULL,
 
-    UNIQUE INDEX `users_name_key`(`name`),
+    UNIQUE INDEX `users_email_key`(`email`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

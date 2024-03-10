@@ -3,7 +3,8 @@ import { z } from "zod";
 
 const envShema = z.object({
     DATABASE_URL: z.string().url(),
-    PORT: z.coerce.number().default(3333)
+    PORT: z.coerce.number().default(3333),
+    JWT_SECRET: z.string()
 });
 
 const _env = envShema.safeParse(process.env);
