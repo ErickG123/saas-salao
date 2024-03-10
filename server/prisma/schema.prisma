@@ -24,3 +24,8 @@ model User {
 
   @@map("users")
 }
+
+model Product {
+  id   String @id @default(uuid())
+  name String
+}
