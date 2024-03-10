@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import z from "zod";
 import { makeDeleteUserUseCase } from "../../../use-cases/factories/make-delete-user-use-case";
+import z from "zod";
 
 const paramsSchema = z.object({
   id: z.string().uuid()

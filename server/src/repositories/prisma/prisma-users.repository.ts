@@ -53,4 +53,18 @@ export class PrismaUsersRepository implements UsersRepository {
       }
     });
   }
+
+  async verifyOtp(email: string, otpCode: string): Promise<User> {
+    const user = await prisma.user.update({
+      where: {
+        email,
+        otpCode
+      },
+      data: {
+        isActive: true
+      }
+    });
+
+    return user;
+  }
 }

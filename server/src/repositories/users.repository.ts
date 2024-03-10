@@ -7,4 +7,5 @@ export interface UsersRepository {
   create(data: Prisma.UserCreateInput): Promise<User>
   update(id: string, data: Prisma.UserUpdateInput): Promise<User>
   delete(id: string): void
+  verifyOtp(email: string, otpCode: string): Promise<User>
 }

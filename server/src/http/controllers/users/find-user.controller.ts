@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import z from "zod";
 import { makeFindUserUseCase } from "../../../use-cases/factories/make-find-user-use-case";
 import { UserNotFound } from "../../../use-cases/errors/user-not-found.error";
+import z from "zod";
 
 const paramsSchema = z.object({
   id: z.string().uuid()

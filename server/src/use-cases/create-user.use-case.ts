@@ -8,6 +8,8 @@ interface CreateUserUseCaseRequest {
   email: string
   password: string
   phone: number
+  isActive: boolean
+  otpCode: string
 }
 
 interface CreateUserUseCaseResponse {
@@ -21,7 +23,9 @@ export class CreateUserUseCase {
     name,
     email,
     password,
-    phone
+    phone,
+    isActive,
+    otpCode
   }: CreateUserUseCaseRequest): Promise<CreateUserUseCaseResponse> {
     const userByEmail = await this.usersRepository.findByEmail(email);
 
@@ -33,7 +37,9 @@ export class CreateUserUseCase {
       name,
       email,
       password: password_hash,
-      phone
+      phone,
+      isActive,
+      otpCode
     });
 
     return { user };

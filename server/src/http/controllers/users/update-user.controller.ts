@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import z from "zod";
 import { makeUpdateUserUseCase } from "../../../use-cases/factories/make-update-user-use-case";
+import z from "zod";
 
 const bodySchema = z.object({
   name: z.string(),

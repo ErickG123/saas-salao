@@ -5,12 +5,14 @@ import { updateUserController } from "./update-user.controller";
 import { deleteUserController } from "./delete-user.controller";
 import { findUserController } from "./find-user.controller";
 import { findAllUsersController } from "./find-all-users.controller";
+import { verifyOtpController } from "./verify-otp.controller";
 
 export async function usersRoutes(app: FastifyInstance) {
   app.get("/users", findAllUsersController);
   app.get("/users/:id", findUserController);
   app.post("/users", createUserController);
   app.post("/users/authenticate", authenticateUserController);
+  app.post("/users/verify-otp", verifyOtpController);
   app.put("/users/:id", updateUserController);
   app.delete("/users/:id", deleteUserController);
 }

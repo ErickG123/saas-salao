@@ -5,6 +5,8 @@ CREATE TABLE `users` (
     `email` VARCHAR(191) NOT NULL,
     `password` VARCHAR(191) NOT NULL,
     `phone` INTEGER NOT NULL,
+    `otpCode` VARCHAR(191) NOT NULL,
+    `isActive` BOOLEAN NOT NULL DEFAULT false,
 
     UNIQUE INDEX `users_email_key`(`email`),
     PRIMARY KEY (`id`)
