@@ -8,4 +8,6 @@ export interface UsersRepository {
   update(id: string, data: Prisma.UserUpdateInput): Promise<User>
   delete(id: string): void
   verifyOtp(email: string, otpCode: string): Promise<User>
+  forgotPassword(email: string): Promise<User>
+  resetPassword(email: string, password: string, token: string): Promise<User>
 }

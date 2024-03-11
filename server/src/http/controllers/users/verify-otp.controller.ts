@@ -7,7 +7,6 @@ const bodySchema = z.object({
   otpCode: z.string()
 });
 
-
 export async function verifyOtpController(request: FastifyRequest, reply: FastifyReply) {
   const body = bodySchema.parse(request.body);
 

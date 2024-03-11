@@ -14,13 +14,15 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(uuid())
-  name     String
-  email    String  @unique
-  password String
-  phone    Int
-  otpCode  String
-  isActive Boolean @default(false)
+  id               String    @id @default(uuid())
+  name             String
+  email            String    @unique
+  password         String
+  phone            Int
+  otpCode          String
+  isActive         Boolean   @default(false)
+  resetToken       String?
+  resetTokenExpiry DateTime?
 
   @@map("users")
 }

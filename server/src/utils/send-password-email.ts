@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
 
-export async function sendActivationEmail(email: string, otpCode: string): Promise<void> {
+export async function sendPasswordEmail(email: string, resetUrl: string) {
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 587,
@@ -14,8 +14,8 @@ export async function sendActivationEmail(email: string, otpCode: string): Promi
     await transporter.sendMail({
       from: "erickgabrielalves0@gmail.com",
       to: email,
-      subject: "Ative sua conta",
-      text: `Seu código de ativação é: ${otpCode}`,
+      subject: 'Recuperação de Senha',
+      html: `Clique no link para redefinir sua senha: <a href="${resetUrl}">${resetUrl}</a>`,
     });
   } catch (error) {
     console.error('Erro ao enviar o e-mail:', error);
