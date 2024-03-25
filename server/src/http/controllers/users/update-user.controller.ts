@@ -6,7 +6,7 @@ const bodySchema = z.object({
   name: z.string(),
   email: z.string(),
   password: z.string(),
-  phone: z.number()
+  phone: z.string()
 });
 
 const paramsSchema = z.object({

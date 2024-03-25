@@ -6,7 +6,7 @@ interface UpdateUserUseCaseRequest {
   name: string
   email: string
   password: string
-  phone: number
+  phone: string
 }
 
 interface UpdateUserUseCaseRequestParams {

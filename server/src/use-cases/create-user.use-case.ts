@@ -7,7 +7,7 @@ interface CreateUserUseCaseRequest {
   name: string
   email: string
   password: string
-  phone: number
+  phone: string
   isActive: boolean
   otpCode: string
 }

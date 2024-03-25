@@ -33,9 +33,13 @@ export class PrismaUsersRepository implements UsersRepository {
   }
 
   async create(data: Prisma.UserCreateInput): Promise<User> {
-    const user = await prisma.user.create({ data });
-
-    return user;
+    try {
+      const user = await prisma.user.create({ data });
+      return user;
+    } catch (error) {
+      console.error('Erro ao criar usuário:', error);
+      throw error;
+    }
   }
 
   async update(id: string, data: Prisma.UserUpdateInput): Promise<User> {
@@ -89,7 +93,7 @@ export class PrismaUsersRepository implements UsersRepository {
       }
     });
 
-    const resetUrl = `http://localhost:3333/users/reset-password?resetToken=${resetToken}`;
+    const resetUrl = `http://localhost:3000/users/reset-password?resetToken=${resetToken}`;
 
     await sendPasswordEmail(user.email, resetUrl);
 

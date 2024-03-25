@@ -18,7 +18,7 @@ model User {
   name             String
   email            String    @unique
   password         String
-  phone            Int
+  phone            String
   otpCode          String
   isActive         Boolean   @default(false)
   resetToken       String?
