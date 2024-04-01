@@ -14,7 +14,7 @@ export default function Sidebar() {
   }
 
   return (
-    <div className="flex flex-col w-1/5 h-screen border-r border-gray-400">
+    <div className="flex flex-col w-1/4 h-screen border-r border-gray-400">
       <a href="/users/profile" className="font-semibold p-4 pb-0 cursor-pointer">Meu Perfil</a>
       <a href="/users/profile/appointments" className="font-semibold p-4 pb-0 cursor-pointer">Meus Agendamentos</a>
       <a href="/" className="font-semibold p-4 pb-0 cursor-pointer">Buscar Estabelecimentos</a>

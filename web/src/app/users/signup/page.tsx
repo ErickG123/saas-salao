@@ -37,7 +37,7 @@ export default function SignUp() {
             localStorage.setItem("email", data.email);
             router.push("/users/verify-otp");
         } catch (error) {
-            console.error("Erro ao criar usuário:", error);
+            console.error("Erro ao criar o usuário:", error);
         }
     }
 

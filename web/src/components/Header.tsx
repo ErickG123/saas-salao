@@ -5,12 +5,13 @@ import Logged from "./Logged";
 import LoggedOut from "./LoggedOut";
 
 interface decodedToken {
-  name: string
-  email: string
+  name: string;
+  email: string;
 }
 
 export default function Header() {
   let name;
+  let logged = false;
 
   if (typeof window !== "undefined") {
     const token = localStorage.getItem("token") ? localStorage.getItem("token") : false;
@@ -19,9 +20,9 @@ export default function Header() {
       const decodedToken = jwtDecode(token) as decodedToken;
       name = decodedToken.name;
     }
-  }
 
-  let logged = localStorage.getItem("logged");
+    logged = localStorage.getItem("logged") ? true : false;
+  }
 
   return (
     <header className="flex justify-between items-center p-4">
@@ -34,5 +35,5 @@ export default function Header() {
         }
       </div>
     </header>
-  )
+  );
 }

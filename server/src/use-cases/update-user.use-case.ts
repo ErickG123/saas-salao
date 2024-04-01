@@ -1,11 +1,9 @@
 import { User } from "@prisma/client"
 import { UsersRepository } from "../repositories/users.repository"
-import { hash } from "bcrypt"
 
 interface UpdateUserUseCaseRequest {
   name: string
   email: string
-  password: string
   phone: string
 }
 
@@ -23,17 +21,13 @@ export class UpdateUserUseCase {
   async execute({ id }: UpdateUserUseCaseRequestParams, {
     name,
     email,
-    password,
     phone
   }: UpdateUserUseCaseRequest): Promise<UpdateUserUseCaseResponse> {
-    const password_hash = await hash(password, 8);
-
     const user = await this.usersRepository.update(
       id,
       {
         name,
         email,
-        password: password_hash,
         phone
       }
     )
