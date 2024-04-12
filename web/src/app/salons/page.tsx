@@ -37,7 +37,7 @@ export default function Salons() {
         <div className="flex justify-between items-center border border-gray-400 p-2.5 rounded-full w-2/3 mr-4">
           <div className="w-full flex">
             <Search className="mr-2" />
-            <input className="w-full outline-none" type="text" name="searchLocation" placeholder="Informe o seu endereço atual" />
+            <input className="w-full outline-none" type="text" name="searchLocation" placeholder="Digite o nome do serviço que você deseja" />
           </div>
         </div>
         <div className="w-1/3 flex items-center justify-center text-white font-semibold bg-slate-950 rounded-md">
