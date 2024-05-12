@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { makeFindUserUseCase } from "../../../use-cases/factories/make-find-user-use-case";
+import { makeFindUserUseCase } from "../../../use-cases/factories/users/make-find-user-use-case";
 import { UserNotFound } from "../../../use-cases/errors/user-not-found.error";
 import z from "zod";
 

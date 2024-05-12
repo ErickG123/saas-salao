@@ -2,12 +2,12 @@ import { FastifyInstance } from "fastify";
 import { createUserController } from "./create-user.controller";
 import { authenticateUserController } from "./authenticate-user.controller";
 import { updateUserController } from "./update-user.controller";
-import { deleteUserController } from "./delete-user.controller";
 import { findUserController } from "./find-user.controller";
 import { findAllUsersController } from "./find-all-users.controller";
 import { verifyOtpController } from "./verify-otp.controller";
 import { forgotPasswordController } from "./forgot-password.controller";
 import { resetPasswordController } from "./reset-password.controller";
+import { deleteUserController } from "./delete-user.controller";
 
 export async function usersRoutes(app: FastifyInstance) {
   app.get("/users", findAllUsersController);

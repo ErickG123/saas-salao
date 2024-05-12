@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { makeCreateUserUseCase } from "../../../use-cases/factories/make-create-user-use-case";
+import { makeCreateUserUseCase } from "../../../use-cases/factories/users/make-create-user-use-case";
 import { UserAlreadyExistsError } from "../../../use-cases/errors/user-already-exists.error";
 import { sendActivationEmail } from "../../../utils/send-otp-email";
 import { generateOTP } from "../../../utils/generate-otp";

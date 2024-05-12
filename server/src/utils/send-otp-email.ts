@@ -18,7 +18,7 @@ export async function sendActivationEmail(email: string, otpCode: string): Promi
       text: `Seu código de ativação é: ${otpCode}`,
     });
   } catch (error) {
-    console.error('Erro ao enviar o e-mail:', error);
+    console.error("Erro ao enviar o e-mail:", error);
     throw error;
   }
 }

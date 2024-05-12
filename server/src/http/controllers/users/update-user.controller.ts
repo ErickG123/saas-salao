@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { makeUpdateUserUseCase } from "../../../use-cases/factories/make-update-user-use-case";
+import { makeUpdateUserUseCase } from "../../../use-cases/factories/users/make-update-user-use-case";
 import z from "zod";
 
 const bodySchema = z.object({
@@ -10,7 +10,7 @@ const bodySchema = z.object({
 
 const paramsSchema = z.object({
   id: z.string().uuid()
-})
+});
 
 export async function updateUserController(request: FastifyRequest, reply: FastifyReply) {
   const body = bodySchema.parse(request.body);

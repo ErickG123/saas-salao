@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { makeResetPasswordUseCase } from "../../../use-cases/factories/make-reset-password-use-case";
+import { makeResetPasswordUseCase } from "../../../use-cases/factories/users/make-reset-password-use-case";
 import z from "zod";
 
 const bodySchema = z.object({

@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { makeVerifyOtpUseCase } from "../../../use-cases/factories/make-verify-otp-use-case";
+import { makeVerifyOtpUseCase } from "../../../use-cases/factories/users/make-verify-otp-use-case";
 import z from "zod";
 
 const bodySchema = z.object({

@@ -18,7 +18,7 @@ export async function sendPasswordEmail(email: string, resetUrl: string) {
       html: `Clique no link para redefinir sua senha: <a href="${resetUrl}">${resetUrl}</a>`,
     });
   } catch (error) {
-    console.error('Erro ao enviar o e-mail:', error);
+    console.error("Erro ao enviar o e-mail:", error);
     throw error;
   }
 }

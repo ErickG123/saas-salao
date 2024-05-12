@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { makeForgotPasswordUseCase } from "../../../use-cases/factories/make-forgot-password-use-case";
+import { makeForgotPasswordUseCase } from "../../../use-cases/factories/users/make-forgot-password-use-case";
 import { sendPasswordEmail } from "../../../utils/send-password-email";
 import z from "zod";
 

@@ -14,45 +14,41 @@ datasource db {
 }
 
 model User {
-  id               String      @id @default(uuid())
+  id               String    @id @default(uuid())
   name             String
-  email            String      @unique
+  email            String    @unique
   password         String
   phone            String
   otpCode          String
-  isActive         Boolean     @default(false)
+  isActive         Boolean   @default(false)
   resetToken       String?
   resetTokenExpiry DateTime?
-  UserSalon        UserSalon[]
+  salon            Salon?    @relation(fields: [salonId], references: [id])
+  salonId          String?
 
   @@map("users")
 }
 
 model Salon {
-  id             String         @id @default(uuid())
-  companyName    String
-  document       String
-  description    String
-  targetAudience String
-  latitude       Float
-  longitude      Float
-  UserSalon      UserSalon[]
-  OpeningHour    OpeningHour[]
-  SalonSegment   SalonSegment[]
-  SocialMedia    SocialMedia[]
+  id           String         @id @default(uuid())
+  companyName  String
+  document     String
+  description  String
+  zipcode      Float
+  address      String
+  district     String
+  city         String
+  state        String
+  number       Int
+  latitude     String
+  longitude    String
+  User         User[]
+  SalonSegment SalonSegment[]
+  OpeningHour  OpeningHour[]
+  SocialMedia  SocialMedia[]
+  categories   Category[]
 
   @@map("salons")
-}
-
-model UserSalon {
-  id         String   @id @default(uuid())
-  user       User     @relation(fields: [userId], references: [id])
-  userId     String   @unique
-  salon      Salon    @relation(fields: [salonId], references: [id])
-  salonId    String   @unique
-  updateDate DateTime
-
-  @@map("userssalons")
 }
 
 model Segment {
@@ -65,22 +61,12 @@ model Segment {
 
 model SalonSegment {
   id        String  @id @default(uuid())
-  segment   Segment @relation(fields: [segmentId], references: [id])
-  segmentId String
   salon     Salon   @relation(fields: [salonId], references: [id])
   salonId   String
+  segment   Segment @relation(fields: [segmentId], references: [id])
+  segmentId String
 
   @@map("salonsegments")
-}
-
-model SocialMedia {
-  id          String @id @default(uuid())
-  url         String
-  socialMedia String
-  salon       Salon  @relation(fields: [salonId], references: [id])
-  salonId     String
-
-  @@map("socialmedias")
 }
 
 model OpeningHour {
@@ -92,6 +78,39 @@ model OpeningHour {
   salonId   String
 
   @@map("openinghours")
+}
+
+model SocialMedia {
+  id      String @id @default(uuid())
+  url     String
+  name    String
+  salon   Salon  @relation(fields: [salonId], references: [id])
+  salonId String
+
+  @@map("socialmedias")
+}
+
+model Category {
+  id       String    @id @default(uuid())
+  name     String
+  services Service[]
+  salon    Salon?    @relation(fields: [salonId], references: [id])
+  salonId  String?
+
+  @@map("categories")
+}
+
+model Service {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  minValue    Float
+  maxValue    Float
+  averageTime Float
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  String
+
+  @@map("services")
 }
 
 model Product {
