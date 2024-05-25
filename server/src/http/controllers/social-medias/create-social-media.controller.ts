@@ -11,10 +11,10 @@ const bodySchema = z.object({
 export async function createSocialMediaController(request: FastifyRequest, reply: FastifyReply) {
   const body = bodySchema.parse(request.body);
 
-  const createSocialMediaController = makeCreateSocialMediaUseCase();
+  const createSocialMediaUseCase = makeCreateSocialMediaUseCase();
 
   try {
-    const { socialMedia } = await createSocialMediaController.execute(body);
+    const { socialMedia } = await createSocialMediaUseCase.execute(body);
 
     return reply.status(201).send(socialMedia);
   } catch (error) {

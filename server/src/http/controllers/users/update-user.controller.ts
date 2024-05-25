@@ -23,8 +23,6 @@ export async function updateUserController(request: FastifyRequest, reply: Fasti
 
     return reply.status(200).send(user);
   } catch (error) {
-    if (error) {
-      return reply.status(400).send({ message: error });
-    }
+    return reply.status(400).send({ message: error });
   }
 }

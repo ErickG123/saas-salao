@@ -47,6 +47,7 @@ model Salon {
   OpeningHour  OpeningHour[]
   SocialMedia  SocialMedia[]
   categories   Category[]
+  Employee     Employee[]
 
   @@map("salons")
 }
@@ -111,6 +112,35 @@ model Service {
   categoryId  String
 
   @@map("services")
+}
+
+model Employee {
+  id                  String                @id @default(uuid())
+  name                String
+  email               String
+  address             String
+  number              Int
+  complement          String
+  district            String
+  zipcode             String
+  city                String
+  state               String
+  salon               Salon                 @relation(fields: [salonId], references: [id])
+  salonId             String
+  EmployeeOpeningHour EmployeeOpeningHour[]
+
+  @@map("employees")
+}
+
+model EmployeeOpeningHour {
+  id         String   @id @default(uuid())
+  weekDay    String
+  startTime  String
+  endTime    String
+  employee   Employee @relation(fields: [employeeId], references: [id])
+  employeeId String
+
+  @@map("employeeopeninghours")
 }
 
 model Product {
