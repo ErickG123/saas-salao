@@ -29,7 +29,7 @@ export default function Header() {
       <a href="/" className="text-2xl font-bold">SaaS</a>
 
       <div className="flex items-center">
-        <a href="/salons" className="font-semibold text-md mr-4">Para Estabelecimento</a>
+        <a href="/salons/create-salon" className="font-semibold text-md mr-4">Para Estabelecimento</a>
         {
           logged ? <Logged /> : <LoggedOut />
         }

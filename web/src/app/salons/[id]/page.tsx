@@ -1,29 +1,69 @@
+"use client"
+
+import { useEffect, useState } from 'react';
 import Categorie from "@/components/Categorie";
 import MoreInfosBtn from "@/components/MoreInfosBtn";
 import ShowPhotosBtn from "@/components/ShowPhotosBtn";
 import { Search, Star } from "@mui/icons-material";
+import { api } from '@/lib/api';
 
-export default function Salons() {
+interface SalonDetails {
+  companyName: string;
+  description: string;
+  address: string;
+  number: number;
+  district: string;
+  city: string;
+  state: string;
+  phoneNumber: string;
+  rating: number;
+  reviews: number;
+}
+
+interface Props {
+  params: {
+    id: string
+  }
+}
+
+export default function Salons({ params }: Props) {
+  const id = params.id;
+
+  const [salonDetails, setSalonDetails] = useState<SalonDetails | null>(null);
+
+  useEffect(() => {
+    const fetchSalonDetails = async () => {
+      try {
+        const response = await api.get(`/salons/${id}`);
+        setSalonDetails(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar os detalhes do salão:', error);
+      }
+    };
+
+    if (id) {
+      fetchSalonDetails();
+    }
+  }, [id]);
+
+  if (!salonDetails) return <div>Carregando...</div>;
+
   return (
     <div className="h-screen p-4">
       <div className="flex border border-black rounded-md">
         <div className="w-1/2 bg-gray-700 rounded-l-md"></div>
         <div className="flex flex-col justify-between p-4">
           <div className="mb-10">
-            <p className="text-xl font-semibold">Radiância Glamorosa</p>
-            <p>
-              Descubra uma jornada única para a verdadeira beleza em nosso ambiente acolhedor e  moderno. Nossos estilistas especializados
-              oferecem tratamentos capilares luxuosos e  serviços exclusivos, enquanto priorizamos a sustentabilidade. Junte-se a nós no Radiância
-              Glamorosa e experimente uma transformação que vai além da estética.
-            </p>
+            <p className="text-xl font-semibold">{salonDetails.companyName}</p>
+            <p>{salonDetails.description}</p>
           </div>
 
           <div className="flex flex-col gap-2">
-            <p><span className="font-semibold mr-1">Endereço:</span> Rua XPTO, 123, Bairro CPT, Barra Bonita - SP</p>
-            <p><span className="font-semibold mr-1">Telefone:</span> (14) 99777-8864</p>
+            <p><span className="font-semibold mr-1">Endereço:</span> {salonDetails.address}, {salonDetails.number}, {salonDetails.district}, {salonDetails.city} - {salonDetails.state}</p>
+            <p><span className="font-semibold mr-1">Telefone:</span> (14) 3641-0000</p>
             <div className="flex items-center">
               <Star />
-              <a href="#" className="font-semibold">4.5 - Ótimo (100)</a>
+              <a href="#" className="font-semibold">4.5 - 400 Avaliações</a>
             </div>
             <div className="flex gap-2">
               <ShowPhotosBtn />

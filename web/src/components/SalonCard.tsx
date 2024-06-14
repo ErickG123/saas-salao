@@ -1,23 +1,34 @@
-import { BookmarkBorder, Star } from "@mui/icons-material";
+import { BookmarkBorder } from '@mui/icons-material';
 
-export default function SalonCard() {
+interface Salon {
+  id: string;
+  companyName: string;
+  address: string;
+  number: number;
+  district: string;
+  city: string;
+  state: string;
+  zipcode: number;
+  description: string;
+}
+
+interface Props {
+  salon: Salon;
+}
+
+export default function SalonCard({ salon }: Props) {
   return (
-    <a href="/salons">
+    <a href={`/salons/${salon.id}`}>
       <div className="grid grid-cols-3 items-center border border-black rounded-md py-4 m-2">
         <div className="mx-auto w-24 h-24 bg-gray-700 rounded-full"></div>
         <div className="col-span-2">
           <div className="flex justify-between">
-            <p>Nome do Salão</p>
+            <p>{salon.companyName}</p>
             <BookmarkBorder className="mr-4" />
           </div>
-          <p>Rua XPTO, 124 - Vila CPT</p>
-          <p><span className="font-semibold">Distância:</span> 400m</p>
-          <p><span className="font-semibold">Telefone:</span> (14) 99777-8864</p>
-          <div className="flex items-center">
-            <Star className="mr-1" />
-            4.5
-            (100)
-          </div>
+          <p>{`${salon.address}, ${salon.number} - ${salon.district}`}</p>
+          <p><span className="font-semibold">Cidade:</span> {salon.city} - {salon.state}</p>
+          <p><span className="font-semibold">CEP:</span> {salon.zipcode}</p>
         </div>
       </div>
     </a>

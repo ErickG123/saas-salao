@@ -30,4 +30,20 @@ export class PrismaSalonsRepository implements SalonsRepository {
 
     return salon;
   }
+
+  async findAll(): Promise<Salon[] | null> {
+    const salons = await prisma.salon.findMany();
+
+    return salons;
+  }
+
+  async findById(id: string): Promise<Salon | null> {
+    const salon = await prisma.salon.findUnique({
+      where: {
+        id
+      }
+    });
+
+    return salon;
+  }
 }
