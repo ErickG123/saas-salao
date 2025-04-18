@@ -74,7 +74,7 @@ npm install
 npx prisma migrate dev
 ```
 
-### Executando o Projeto
+### 4. Executando o Projeto
 ```bash
 # backend
 cd backend
